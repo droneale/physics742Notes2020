@@ -6,7 +6,7 @@ A useful approach is to consider, at a single instant of time, a large (infinite
 \subsection{The micro-canonical ensemble}
 In the previous section, we considered an isolated system where we could keep track of the dynamics of every particle and use that to calculate the values of extensive, macroscopic properties of the system. An important aspect of this was the conservation of energy for the system. We refer to such systems as a \emph{micro-canonical ensemble} --- the system is isolated with no heat flux and no change in the number of particles, hence the internal energy of the system is constant and it is described entirely by the Hamiltonian dynamics.
 
-Since $H=E=\mbox{const.}$ for a micro-canonical ensemble, we can associate the ensemble with a hypersurface $H=E$ that corresponds to a the macrostate $(N,V,E)$. However, in order to allow for small fluctuations that correspond to what is essentially the same state, (we require any observables to be smoothly varying functions of the phase space) it is often desirable to replace the hyper-surface with the hyper-shell $E-\Delta/2 \leq H \leq E+\Delta/2$. The \emph{density function} $\rho(p,q,t)$ characterises the distribution of points in phase space for a system in some state. With three d.o.f. and $N$ particles, we therefore have $\rho(p,q,t)\mathrm{d}^{3N}p)\mathrm{d}^{3N}q$ as the number of representative points in phase space in a volume element $\mathrm{d}^{3N}p)\mathrm{d}^{3N}q$, centred at the point $(p,q)$ at time $t$. From Liouvilles theorem, we have the $\frac{\partial \rho}{\partial t}=0$. 
+Since $H=E=\mbox{const.}$ for a micro-canonical ensemble, we can associate the ensemble with a hypersurface $H=E$ that corresponds to a the macrostate $(N,V,E)$. However, in order to allow for small fluctuations that correspond to what is essentially the same state, (we require any observables to be smoothly varying functions of the phase space) it is often desirable to replace the hyper-surface with the hyper-shell $E-\Delta/2 \leq H \leq E+\Delta/2$. The \emph{density function} $\rho(p,q,t)$ characterises the distribution of points in phase space for a system in some state. With three d.o.f. and $N$ particles, we therefore have $\rho(p,q,t)\mathrm{d}^{3N}p\mathrm{d}^{3N}q$ as the number of representative points in phase space in a volume element $\mathrm{d}^{3N}p\mathrm{d}^{3N}q$, centred at the point $(p,q)$ at time $t$. From Liouvilles theorem, we have the $\frac{\partial \rho}{\partial t}=0$. 
 
 When the internal energy of the system lies in $E-\Delta/2 \leq H \leq E+\Delta/2$ we have
 
@@ -21,7 +21,7 @@ When the internal energy of the system lies in $E-\Delta/2 \leq H \leq E+\Delta/
 
 For the hyper-shell $E-\Delta/2\leq H \leq E+\Delta/2$ the enclosed volume is
 \[
-\omega(E) = \int_{E-\Delta/2\leq H \leq E+\Delta/2} \mathrm{d}^{3N}p)\mathrm{d}^{3N}q.
+\omega(E) = \int_{E-\Delta/2\leq H \leq E+\Delta/2} \mathrm{d}^{3N}p\mathrm{d}^{3N}q.
 \]
 We'd like to establish a numerical correspondence between $\Gamma$ and $\omega$ in order to account for the multiple microstates that can correspond to a single macrostate of the system. To do so, we introduce the concept of a \emph{fundamental volume} $\omega_0$ which we regard as being the volume equivalent to one microstate. Then $\Gamma = \omega/\omega_0$ and hence
 \[
@@ -75,7 +75,7 @@ $$
 	\exp\left(\frac{1}{k_B}S^R(E-H^S)\right)\simeq \exp\left(\frac{1}{k_B}S^R(E)\right)\exp\left(\frac{-1}{k_B}\frac{\partial S^R}{\partial E}|_E H^S(x_S)\right)\ldots
 $$
 
-Earlier in the course, we identified $\frac{\partial S}{\partial E}$ with $\frac{1}{T}$, and, for a canonical ensemble, $T$ is constant (that's the point of the reservoir) so we write the expected value of the observable as
+Earlier in the course, we associated $\frac{\partial S}{\partial E}$ with $\frac{1}{T}$; for a canonical ensemble, $T$ is constant (that's the point of the reservoir) so we write the expected value of the observable as
 $$
 	\langle A\rangle \simeq \frac{1}{|\Gamma|}\int dx_sA(x_S)\times\exp\left(\frac{1}{k_B}s^R(E)\right)\exp\left(\frac{-H^S(x_S)}{k_BT}\right).
 $$
