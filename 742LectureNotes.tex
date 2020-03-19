@@ -1,8 +1,11 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb}
+\usepackage[subpreambles=true]{standalone}
 \usepackage{graphicx}
 \usepackage{geometry}
+\usepackage{wrapfig}
+\usepackage[most]{tcolorbox}
 \usepackage{titlesec}
 \usepackage{booktabs}
 \usepackage{float}
@@ -22,7 +25,8 @@
 \title{Physics 742: \\
 	Statistical Mechanics \& Condensed Matter\\
 	Notes on statistical mechanics and complex networks}
-\author{Dion O'Neale, Frazer Moore, Maxwell N. Finan-Jenkin, Alex Ferguson}
+
+\author{Dion O'Neale, Frazer Moore, Maxwell N. Finan-Jenkin, Alex Ferguson, W. Liao, Jasmine Anderson-Baldwin, Juliet Nelson, Gray Hunter}
 \maketitle
 \newpage
 \tableofcontents
@@ -33,6 +37,9 @@
 \input{03-statisticalPostulates.tex}
 \input{04-hamiltonianPhaseSpace.tex}
 \input{05-molecularDynamics.tex}
+
+\input{06-ensembles.tex}
+\input{07-quantumStatistics.tex}
 
 \input{notLiouvillesTheorem.tex}
 \input{liouvillesTheoremEssays.tex}
