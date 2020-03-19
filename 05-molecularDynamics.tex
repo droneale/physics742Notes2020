@@ -39,31 +39,40 @@ $$
 $$
 That is, it evaluates the differential equation at the current time step and approximates the solution with a straight line of slope $\dot{\bf x}_n$. 
 
-[You can add a diagram to illustrate this - even a hand drawn example.]
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.075]{expliciteuler.png}
+	\caption{Illustration of the Euler method; the unknown curve is in blue, and its polygonal approximation is in red.}
+\end{figure}
 
 The error in the approximation of the solution by the explicit Euler method grows in proportion to the step size $h$; that is, $\|{\bf x}_N-{\bf x}(Nh)\|=\mathcal{O}(h)$. We therefore say that the method is first order accurate.
 
 While the explicit Euler method is very easy to implement, it has a number of issues (you'll see one of them in the assignment). These include the fact that it becomes unstable (the error in its approximation starts to grow exponentially) when the step size is too large. The \emph{implicit Euler} (like the explicit Euler method, but the derivative is evaluated at the end of the time step i.e.$f(x_{n+1})$) method avoids this issue, but at the cost of needing to iteratively solve an implicit equation $x_{n+1}=x_n+hf(x_{n+1})$. It is still only first order.
 
-Since $M\dot{\bf q} = {\bf p}$ and $M\ddot{\bf q} = \dot{\bf p}$ the equations of motion for the system can be written as
+Since $M\dot{\bf q} = {\bf p}$ and $M\ddot{\bf q} = \dot{\bf p}$ the equations of motion for the system from Newton's laws can be written as
 \begin{equation}
 	M\ddot{\bf q} = f({\bf q}) = -\nabla U({\bf q}).
 	\label{eq:2vf}
 \end{equation}
 That is, we can turn the set of $2d$ first-order differential equations in ${\bf q}$ and ${\bf p}$ into $d$ second order differential equation in ${\bf q}$.
-In much of what follows, I'm going to omit the mass matrix and write $\ddot{\bf q} = f({\bf q})$. This is purely for convenience. Everything still holds when $M$ takes other values for the masses --- just make sure to include a factor of $M^{-1}$ in the $f({\bf q})$ term.
+In much of what follows, I'm going to omit the mass matrix and write $\ddot{\bf q} = f({\bf q})$. The mass matrix is a symmetric matrix M that expresses the connection between the time derivative of the generalized coordinate vector q of a system and the kinetic energy T of that system, by the equation where denotes the transpose of the vector. This is purely for convenience. Everything still holds when $M$ takes other values for the masses --- just make sure to include a factor of $M^{-1}$ in the $f({\bf q})$ term.
 
 A better approach to numerical integration is to use the Verlet (AKA St\"{o}rmer, AKA leap-frog) method. This is most easily understood in its \emph{two-step formulation} (i.e. the method requires information from two previously known time steps ($t_{n-1}$ and $t_n$) in order to compute the approximation at the future time step $t_{n+1}$). The approximation is given by 
 \begin{equation}
 	\frac{{\bf q}_{n+1} - 2{\bf q}_n + {\bf q}_{n-1}}{h^2} \simeq f({\bf q}_n) = \ddot{\bf q},
 	\label{eq:2lf}
 \end{equation}
-where $f({\bf q})$ is the second order differential equation in equation \ref{eq:2vf}. It's not hard to see (you should verify it yourself) that the LHS of \ref{eq:2lf} is an approximation of the second derivative at the point ${\bf q}_n$.
+where $f({\bf q})$ is the second order differential equation in equation \ref{eq:2vf}. It's not hard to see (see proof in reading [2]) that the LHS of \ref{eq:2lf} is an approximation of the second derivative at the point ${\bf q}_n$.
 
-[add a picture to illustrate this]
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{twostep}
+	\caption{Two-step formulation}
+\end{figure}
 
 The two-step formulation of the leapfrog method can therefore be seen as determining a parabola that interpolates the points ${\bf q}_{n-1},~{\bf q}_{n},$ and ${\bf q}_{n+1}$ and matches the second derivative at the midpoint.
 
+It turns out that, for a number of reasons, it is better to work with the Verlet method in its one-step formulation. This can be derived by introducing the velocity ${\bf p}=\dot{\bf q}$ and turning equation \ref{eq:2vf} back into a first-order system of twice the dimension
 It turns out that, for a number of reasons, it is better to work with the Verlet method in its one-step formulation. This can be derived by introducing the velocity $p=\dot{\bf q}$ and turning equation \ref{eq:2vf} back into a first-order system of twice the dimension
 $$
 	\dot{\bf q} = {\bf p},\qquad \dot{\bf p} = f({\bf q}).
@@ -80,7 +89,11 @@ where some of the values have been calculated on a staggered grid. We can then u
 	{\bf p}_{n+1} &=& {\bf p}_{n+\frac12}+\frac{h}{2}f({\bf q}_{n+1}).
 \end{eqnarray*}
 
-[Add a picture to illustrate this]
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{onestep}
+	\caption{One-step formulation}
+\end{figure}
 
 There is also a dual formulation of the method that gives the values of ${\bf q}$ and ${\bf p}$ on the staggered grid points $t_{n-\frac12},t_{n+\frac12},$ etc.
 (It makes sense to think of the one-step method as a discrete map $\Phi_h$, similar to the flow map $\varphi_{f,t}$ that maps from the known solution, to its approximation one time step forward.)
