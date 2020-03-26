@@ -1,0 +1,286 @@
+\subsection{Notes by Wang: From Liouville to grand canonical ensembles}
+\def\b#1{\mathbf{#1}}
+\def\mref#1{\hspace{-7.5pt} ~(\ref{#1})}
+\def\td#1{\frac{d#1}{dt}}
+\footnote{The note is written by Wang and the first draft finished on $14^{th}$ Mar. 2020.}The Hamilton's equation for a system of $d$ degree of freedom may be written as
+\begin{equation}\label{he}
+\dot{\b x}=\b J^{-1}D H(\b x)
+\end{equation}
+where
+\[
+    \b x=\begin{pmatrix}\b q\\\b p\end{pmatrix}
+    \]
+is a vector of the space $\mathbb R^d\times\mathbb R^d=\mathbb R^{2d}$ and $\b q$, $\b p$ are generalized coordinates and generalized momentums.
+
+
+\noindent $\b J$ is the matrix
+\[
+    \b J=\begin{pmatrix} 0 & -I\\ I & 0\end{pmatrix}
+    \]
+where $I$ is the identity on the space $\mathbb R^d$. $DH(\b x)$ is the differential of the Hamiltonian at the point $\b x$.
+
+A small variation of the $\b x$ may be taken on the both side of the \mref{he}
+\def\tdb#1{\td{(#1)}}
+\def\vd{\Delta}
+\[
+\tdb{\b x+\Delta\b x}=\b J^{-1}D H(\b x+\Delta\b x)
+\]
+Let $\vd\b x$ be sufficiently small, then there seems to be
+\def\dx{\vd\b x}
+\[
+\tdb{\b x+\dx}=\b J^{-1}D(H(\b x)+D(H(\b x))\dx)
+\]
+with \mref{he}
+\[
+\tdb{\dx}=\b J^{-1}D(D(H(\b x))\dx)
+\]
+The variation $\dx$ is independent of the $\b x$. Thus
+\def\hex{\b H(\b x)}
+\begin{equation}\label{vhe}
+\tdb{\dx}=\b J^{-1}\hex\dx
+\end{equation}
+where $\hex$ is the Hessian matrix at point $x$
+\[
+    D(D(H(\b x)))=\hex=\left[\frac{\partial^2 H}{\partial x_i\partial x_j}\right]=\left[H_{,i,j}\right]
+    \]
+It is symmetric as long as the Hamiltonian is of class $C^{(2)}$.
+
+If all the points in the space $\mathbb R^{2d}$ are considered as the inital conditions $\b x(0)$ for \mref{he}, then aftet time $t$ each point $\b x(0)$ corresponds to $\b x(t)$ provided that the solution to \mref{he} is unique. This permits the definition of the function $\phi_t$
+\[
+   \phi_t :  \mathbb R^{2d}\longrightarrow \mathbb R^{2d}, \text{\ \ \ and\ \ \ } \phi_t: \b x(0)\mapsto \b x(t) 
+    \]
+
+If the system is initially at point $\b x$ when $t=0$, then for sufficiently small $\b h$ varying at the same time $t=0$, there
+\[
+    \dx=\phi_t(\b x+\b h)-\phi_t(\b x)=D\phi_t(\b x)\b h
+    \]
+ with \mref{vhe}, there
+ \begin{equation}\label{vhe2}
+ \tdb{D\phi_t(\b x)}\b h=\b J^{-1}\hex D\phi_t(\b x)\b h
+ \end{equation}
+ with $\b h$ varying in an arbitrary manner
+ \begin{equation}\label{vhe2}
+ \tdb{D\phi_t(\b x)}=\b J^{-1}\hex (D\phi_t(\b x))
+ \end{equation}
+ At point $\b x$, it may be set up a local reference frame with bases from the family
+ \[
+     \mathfrak B=\{\b h_1, \b h_2,\cdots ,\b h_{2d}\}
+     \]
+with members sufficiently small such that the linearity is a prominent feature.
+
+Denote by $\Omega(0,\b x)$ the oriented volume determined by $\mathfrak B$, which is
+\[
+    \det(\b h_1, \b h_2,\cdots ,\b h_{2d})=\Omega(0,\b x)
+    \] 
+After time $t$, the coordinate transformation $\phi_t$ transform the volume into\footnote{compare with Heisenberg's picture, what's the ``interaction picture''?(I don't know)}
+\[
+    \det(D\phi_t(\b x)\b h_1, D\phi_t(\b x)\b h_2,\cdots ,D\phi_t(\b x)\b h_{2d})=\Omega(t,\phi_t(\b x))
+    \]
+where the local reference frame sits on the point $\phi_t(\b x)$.
+
+Under the same Hamiltonian, it is possible to change the notation ``$\Omega(t,\phi_t(\b x))$'' into ``$\Omega(t,\b x)$'' without causing confusion.
+ When the linear operator $D\phi_t(\b x)$ is expressed in the matrix form with respect to the family $\mathfrak B$, the properties of the alternating tensors then gives
+\begin{equation}\label{omega}
+    \det(D\phi_t(\b x))\det(\b h_1, \b h_2,\cdots ,\b h_{2d})=\Omega(t, \b x)
+\end{equation}
+\def\trace{\operatorname{Trace}}
+Notice that the determinant and trace of a matrix does not depend on the basis, since they are only associated with eigenvalues counting their multiplicities.\footnote{Or, $\det (AB)=\det (BA)$ and $\trace (AB)=\trace (BA)$}
+
+If the matrix $D\phi_t(\b x)$ is expressed in the form of column vectors
+\[
+    D\phi_t(\b x)=[\b v_1, \b v_2, \cdots , \b v_{2d}]
+\]
+\def\Ah{\b J^{-1}\hex}
+then there
+\begin{align*}
+&\td\relax\det(\b v_1, \b v_2, \cdots , \b v_{2d})\\
+=&\det(\td{\b v_1}, \b v_2, \cdots , \b v_{2d})+\det(\b v_1,\td{\b v_2}, \cdots , \b v_{2d})+\cdots\\
+=&\det(\Ah \b v_1, \b v_2, \cdots , \b v_{2d})+\det(\b v_1,\Ah \b v_2, \cdots , \b v_{2d})+\cdots
+\end{align*}
+At this point if $D\phi_t(\b x)$ is not singular\footnote{Assume that the degree of freedom unchanged}, then the matrix $D\phi_t(\b x)$ may be cast into the basis $\{\b v_1, \b v_2, \cdots , \b v_{2d}\}$
+\begin{align*}
+\det(a_{11}\b v_1+a_{12}\b v_2+\cdots, \b v_2, \cdots , \b v_{2d})+\det(\b v_1,a_{21}\b v_1+a_{22}\b v_2+\cdots, \cdots , \b v_{2d})+\cdots\\
+\end{align*}
+After doing some elementary operations, there\footnote{It is so lucky that by chance the proof of Liouville-Jacobi-Ostrogradskii identity is implied}
+\begin{equation}\label{mu}
+\td\relax\det(D\phi_t(\b x))=\trace(\Ah)\det(D\phi_t(\b x))
+\end{equation}
+Since the order of second derivatives can be changed, the trace would be zero. \mref{mu} gives
+\begin{equation}\label{mucat}
+\td\relax\det(D\phi_t(\b x))=0
+\end{equation}
+With $\det(D\phi_{t=0}(\b x))=\det (I_{2d})=1$, \mref{omega} gives
+\begin{equation}\label{li1}
+\Omega(0, \b x)=\Omega(t, \b x)
+\end{equation}
+It seems that Liouville's theorem lurks in the equation above. 
+
+Define the $2d$ cube associated with $\mathfrak B$ as
+\begin{equation}
+\Gamma=\{\b z\in \mathbb R^{2d} :\b z=\b x(t)+\sum_{\b h\in \mathfrak B}\alpha_{\b h} \b h, \text{with }0\leq \alpha_{\b h}\leq 1\text{ for any }\b h \}
+\end{equation}
+It can be proved that the volume of the set $\Gamma$ is equal to $|\Omega(0,\b x)|$ using the tools from the measure theory\footnote{The proof is elementary except for the part involving the second countability, which could be perhaps understood intuitively}.
+
+\def\vn{\mathcal N}
+Assume there is an ensemble of systems labelled by $i=1,2,\cdots , \vn$\footnote{The letter ``$N$'' is reserved for other purposes}, each of them corrresponds to a ``generalized particles''. Define the density $\rho$ as
+\begin{equation}
+\rho=\frac{\text{number of systems in the cube }\Gamma}{|\Omega(0,\b x)|}
+\end{equation}
+$\rho$ is a function of time and $\b x$ and characterizes the density of the generalized particles.
+
+With \mref{li1}, it appears that 
+\begin{equation}\label{lio}
+\td{\rho}=0
+\end{equation}
+The equation above is the Liouville's theorem. It may be differentiated to give
+\begin{equation}
+\left(\frac{\partial\rho}{\partial t}\right)_{\b q,\b p}+\sum_{k=1}^{d}\left(\frac{\partial\rho}{\partial q_k}\dot{q_k}+\frac{\partial\rho}{\partial p_k}\dot{p_k}\right)=0
+\end{equation}
+If a property $f$ relies on microscopic variable $\b x$, then under the assumption that each generalized particle is equally probable, the average of $f$, in close connection with the macroscopic properties, is calculated as
+\begin{equation}\label{mac}
+<f>=\frac{\int f\rho d\Omega}{\vn}
+\end{equation}
+The integration may span different dimensions, that is, taking the sum of the integrations of each entire spaces with different dimensions. 
+
+The property $f$ is a function on $\mathbb R^{2d}$, and $\vn$ is unchanged with time. If $\rho$ changes with time while keeping $\b x$ unchanged, then the average of $f$ may change also. If the system is 
+in the equilibrium, then $\rho$ is not likely to change with time
+\[
+    \left(\frac{\partial\rho}{\partial t}\right)_{\b q,\b p}=0
+    \]
+With Liouville's equation, it is thus meaingful to find the solution to the equation
+\begin{equation}\label{sta}
+\sum_{k=1}^{d}\left(\frac{\partial\rho}{\partial q_k}\dot{q_k}+\frac{\partial\rho}{\partial p_k}\dot{p_k}\right)=0
+\end{equation}
+
+The equation above may be written as
+\[
+    D\rho(\b x)\cdot\dot{\b x}=0
+    \]
+ Therefore if the generalized particle has nonzero velocity, then it is sufficient that at any instant the value of $\rho$ along the trajectory\footnote{or the ``flow line''} predicted by \mref{he} keeps unchanged.
+
+Consider the real valued function $g$ on $\mathbb R^{2d}$ with the following properties
+
+{\itshape Let $G$ be a real variable and $S=\{\b x : g(\b x)=G\}$. $\phi_t$ maps the set $S$ to itself all the time.
+
+In other words, $\phi_t(g^{-1}(\{G\}))\subset g^{-1}(\{G\})$ for all $0\leq t$ }
+
+It is possible that a list of such functions may be found
+\[
+    g_1, g_2,\cdots ,g_n
+    \]
+Because
+\[
+    \phi_t(\bigcap_{k=1}^{n}g_n^{-1}(\{G_n\}))\subset \bigcap_{k=1}^{n}\phi_t(g_n^{-1}(\{G_n\}))\subset\bigcap_{k=1}^{n}g_n^{-1}(\{G_n\})
+    \]
+If define\[
+    [G_1,G_2,\cdots ,G_n]=\bigcap_{k=1}^{n}g_n^{-1}(\{G_n\})
+    \]
+    then the trajectory of the general particles cannot escape from the set $[G_1,\cdots ,G_n]$.
+
+One possible solution to the equation \mref{sta} is to let $\rho$ be a function of $G_1,G_2,\cdot ,G_n$ only
+\begin{equation}\label{sol}
+\rho=\rho(G_1,G_2,\cdots ,G_n)
+\end{equation}
+Once the generalized particle is ``trapped'' in the set $[G_1,G_2,\cdots ,G_n]$, it cannot escape. Therefore the trajectory lines are all within the set and along the trajectory $G_1,G_2,\cdots ,G_n$ keep unchanged.
+Consequently, the solution given by \mref{sol} has constant density along the trajectory. Therefore, it appears that \mref{sol} is a solution for the equilibrium state.
+
+Examples of the functions that share the property of $g$ includes the energy, which comes from energy conservation; volume of the system, which assigns for each point $\b x$ the volume in the usual sense; dimension and number of particles of the systems, which is constrained by the algebraic expression of the Hamiltonian when it is time independent\footnote{$H$ only involves $\b x$ and has no time argument }.
+
+The solution given by \mref{sol} may be written as
+\begin{equation}\label{sol2}
+\rho=\rho(g_1(\b x),g_2(\b x),\cdots ,g_n(\b x))
+\end{equation}
+without causing confusion.
+
+Products of the solutions of the form as in \mref{sol2} is a solution, so are sum, composition of functions, etc. 
+
+In general, the solution takes the following explicit form
+\begin{equation}\label{sol3}
+\rho=\int c(G_1,G_2,\cdots ,G_n)\cdot 1_{[G_1,G_2,\cdots ,G_n]}dG_1dG_2\cdots dG_n
+\end{equation}
+The integration may span different dimensions. $1_{[G_1,G_2,\cdots ,G_n]}$ is the elementary step function which assigns to each ``compartment'' $[G_1,G_2,\cdots ,G_n]$ value $1$ and zero elsewhere.
+The coefficient $c(G_1,G_2,\cdots ,G_n)$ may involve Dirac's $\delta$ function\footnote{Not only in the case of the functions $g$ having discrete values such as dimensions and number of particles of the systems}.
+
+It is desirable to further investigate the mathematical expression of the coefficient $c(G_1,G_2,\cdots ,G_n)$. To this end, a g-space $\mathbb R^n$ is set up. 
+The space may be ``discretized'' into small cube and one of them is
+\begin{equation}
+    G_{i_1,i_2,\cdots ,i_n}=\prod_{k=1}^{n}[G_{i_k},G_{i_k}+\epsilon)
+    \label{cubi}
+\end{equation}
+$(g_1,g_2,\cdots ,g_n)^{-1}(G_{i_1,i_2,\cdots ,i_n})$ may be empty set if some of the half-open interval are disjoint from the image of the domain of some $g$ function such as dimensions.
+
+Because the set of the families $\{i_1,i_2,\cdots ,i_n\}$ is countable, it is without loss of generality to replace this notation with $i$ only.
+
+Let $N_i$ denote the number of the generalized particles that are trapped in the set
+\begin{equation}
+    N_i=\text{card}((g_1,g_2,\cdots ,g_n)^{-1}(G_i))
+    \label{number}
+\end{equation}
+when the $G_i$ cube is empty, $N_i$ is set to 1.
+
+The map $(g_1,g_2,\cdots ,g_n)(\b x)=(g_1(\b x),\cdots ,g_n(\b x))$.
+
+Because the generalized particles by the ensemble theory is independent and indistinguishable from each other as incomplete information is taken into consideration,
+the probability that the certain distribution of the generalized particles is proportional to
+\begin{equation}
+   P\propto \frac{\mathcal N!}{\prod_{i}N_i!}
+    \label{prob}
+\end{equation}
+
+It is therefore interesting to maximize $P$, or equivalently, for sufficiently large $\vn$, to extremize\footnote{Using $\ln (N!)\approx N\ln N-N$, for the proof, take the integral $\int_{1/N}^{1}\ln xdx$}%
+\footnote{Besides the natural logarithm function, other strictly monotonic increasing function will give the same result. Since this fact can be understood intuitively, the proof is omitted here.}
+\begin{equation}
+    s=\sum_{i}N_i\ln N_i
+    \label{gs}
+\end{equation}
+Consider the restraints prescribed by
+\begin{equation}
+    \sum_i N_iG_{i_{l}}=\overline{G_l}\text{\ \  , for } l=1,2,\cdots ,n
+    \label{cons}
+\end{equation}
+where $\overline{G_l}$ are constants. With the help of Lagrange's multipliers, there\footnote{that's the reason why the formulations of canonical ensembles are similar to the Maxwell-Boltzmann's distribution}
+\begin{equation}
+    N_i=Ce^{\sum_l\alpha_lG_{i_{l}}}
+    \label{lag}
+\end{equation}
+It may be restored to the continuous cases and obtain the solution of the form below\footnote{The central limit theorem is implied here.}
+\begin{equation}\label{solution}
+\rho=C\int e^{\alpha_1G_1+\alpha_2G_2+\cdots +\alpha_nG_n}\cdot\delta(G'_1-G_1)\delta(G'_2-G_2)\cdots\delta(G'_n-G_n)\cdot 1_{[G'_1,G'_2,\cdots ,G'_n]}dG'_1dG'_2\cdots dG'_n
+\end{equation}
+It may be criticizied that the formula in the form given by \mref{solution} is abstract enough to be useless for practical purposes after complicated mathematical reasoning.
+To counter this argument, the solution \mref{solution} will be applied to the case of grand canonical ensemble to obtain the probability density function
+
+The grand canonical ensemble concerns the systems with varying energy and varying number of particles of the systems, but keep the volume unchanged. The formula \mref{solution} reduced to
+\begin{equation}
+    \rho=C\int\int e^{\alpha_1E+\alpha_2N}\delta (E-E')\delta (N-N')\cdot 1_{[E',N']}dE'dN'
+    \label{gce}
+\end{equation}
+It could be integrated by each variable separately
+\begin{align}
+    \rho&=C\int\int e^{\alpha_1E+\alpha_2N}\delta (E-E')\delta (N-N')\cdot 1_{[E',N']}dE'dN'\nonumber\\
+    &=C\int e^{\alpha_1E}\delta (E-E')dE'\int e^{\alpha_2N}\delta (N-N')\cdot 1_{[E',N']}dN'\label{lastline}
+\end{align}
+In the last step \mref{lastline}, it is necessary to compute
+\begin{equation}
+    \int e^{\alpha_2N}\delta (N-N')\cdot 1_{[E',N']}dN'
+    \label{ngce}
+\end{equation}
+If $N$ is not a natural number, then the set $[E',N']$ would be empty because the dimensions cannot assign a non-integer to a generalized particle.
+Therefore there is no set for assigning number 1, the elementary step function equals to zero, the $\rho=0$. If $N$ is a natural number, then the Dirac's $\delta$ function gives
+\begin{align}
+    \rho &=C\int e^{\alpha_1E+\alpha_2N}\delta (E-E')\cdot 1_{[E',N]}dE'\nonumber\\
+    &=Ce^{\alpha_1E+\alpha_2N}
+    \label{calgce}
+\end{align}
+The elementary step function is 1 because at any point $\b x$ the energy of the system can be calculated.
+
+The average of $f$ then has the form
+\begin{equation}
+    <f>=\int f\rho d\Omega =C\sum_{N=1}^{+\infty}\int f\cdot e^{\alpha_1E+\alpha_2N} d\Omega
+    \label{gceaverage}
+\end{equation}
+The summation appears because when the $N$ is not an integer, the elementary step function equals to zero and the integral vanished between.
+The theory developed by this note is then merged into the ``canonical'' discussion of the theory of statistical mechanics.
+
+At this point one can see the profound implication of Liouville's theorem, and the significant of the Liouville's theorem is that when combined with
+simple assumptions, the theorem gives many useful conclusions. Liouville's theorem is the first step to investigate the probrability distributions from the microscopic point of view to the macroscopic situations. 
