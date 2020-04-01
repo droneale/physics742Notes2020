@@ -348,7 +348,7 @@ $$
 
 The expected number of particles in each state can be calculated as
 $$
-	\langle n_k \rangle^\text{boson} = -\frac{\partial}{\partial \mu}(-\beta\ln(Z)) = \frac{1}{\exp(\beta(\epsilon_k-\mu))-1}.
+	\langle n_k \rangle^\text{boson} = -\frac{\partial}{\partial \mu}\left(\frac{\partial \ln Z_{k}}{\partial \mu}\right)= \frac{1}{\exp(\beta(\epsilon_k-\mu))-1}.
 $$
 
 \subsubsection{Fermi-Dirac statistics}
@@ -374,7 +374,7 @@ $$
 $$
 and the expected number of particles in the $k$th energy state is
 $$
-\langle n\rangle_{MB} = \exp(-\beta(\epsilon_k-\mu)).
+\langle n\rangle_{MB} = \frac{1}{\exp(-\beta(\epsilon_k-\mu))}
 $$
 
 %\subsection{An example: the quantum harmonic oscillator}
